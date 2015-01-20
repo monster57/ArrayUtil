@@ -1,4 +1,4 @@
-#include "../expr_assert.h"
+#include "expr_assert.h"
 #include "arrayUtil.h"
 void test_to_check_for_two_arrays_are_equal_for_right_condition(){
 	int array1[] ={1,2,3};
