@@ -40,3 +40,19 @@ void test_to_create_new_array_and_check_for_all_element_is_0(){
 
 }
 
+void test_to_check_the_size_of_array_is_changed_and_zero_is_added_to_new_places(){
+	ArrayUtil array1 = create(sizeof(int),3);
+	ArrayUtil array2;
+	((int *)array1.base)[0]=1;
+	((int *)array1.base)[1]=2;
+	((int *)array1.base)[2]=3;
+	array2 =  resize(array1,5);
+	assertEqual(array2.length, 5);
+	assertEqual(((int *)array2.base)[0],1);
+	assertEqual(((int *)array2.base)[1],2);
+	assertEqual(((int *)array2.base)[2],3);
+	assertEqual(((int *)array2.base)[3],0);
+	assertEqual(((int *)array2.base)[3],0);
+
+}
+

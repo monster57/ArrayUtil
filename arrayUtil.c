@@ -27,3 +27,13 @@ ArrayUtil create(int typeSize, int length){
 	array.length =length;
 	return array;
 }
+
+ArrayUtil resize(ArrayUtil array, int length){
+	int counter;
+	array.base = realloc(array.base, (array.typeSize*length));
+	for(counter=array.length;counter<length;counter++){
+		((int*)array.base)[counter]=0;
+	}
+	array.length = length;
+	return array;
+} 
