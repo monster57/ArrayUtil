@@ -37,3 +37,21 @@ ArrayUtil resize(ArrayUtil array, int length){
 	array.length = length;
 	return array;
 } 
+
+
+int findIndex(ArrayUtil array, void* element){
+	int counter;
+	char *mainArray = (char*)array.base;
+	char *ele = (char*)element;
+	int maxLength = array.length*array.typeSize;
+	for(counter=0;counter<maxLength; counter = counter+array.typeSize){
+		if(mainArray[counter] == *ele)
+			return counter/array.typeSize;
+	}
+	return -1;
+}
+
+void dispose(ArrayUtil util){
+	free(util.base);
+	util.base = NULL;
+}
