@@ -6,3 +6,5 @@ struct arrayUtil{
 };
 
 int areEqual(ArrayUtil array1, ArrayUtil array2);
+
+ArrayUtil create(int typeSize, int length);

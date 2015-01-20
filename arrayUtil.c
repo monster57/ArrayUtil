@@ -17,6 +17,13 @@ int typesizeChecker(ArrayUtil array1 , ArrayUtil array2){
 }
 
 int areEqual(ArrayUtil array1, ArrayUtil array2){
-	(array1.length == array2.length) && typesizeChecker(array1 , array2);
-	return 1;	
+	return ((array1.length == array2.length) && typesizeChecker(array1 , array2));	
+}
+
+ArrayUtil create(int typeSize, int length){
+	ArrayUtil array;
+	array.base = calloc(length,typeSize);
+	array.typeSize=typeSize;
+	array.length =length;
+	return array;
 }
