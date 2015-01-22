@@ -1,11 +1,12 @@
 #include "arrayUtil.h"
+#include <string.h>
 #include <stdlib.h>
 
 
 int elementChecker(ArrayUtil array1 , ArrayUtil array2){
 	int counter;
 	for(counter=0; counter<array1.length;counter++){
-		if(((int*)array1.base)[counter] != ((int*)array2.base)[counter]){
+		if(((char*)array1.base)[counter] != ((char*)array2.base)[counter]){
 			return 0;
 		}
 	}
@@ -28,16 +29,11 @@ ArrayUtil create(int typeSize, int length){
 	return array;
 }
 
-ArrayUtil resize(ArrayUtil array, int length){
-	int counter;
-	array.base = realloc(array.base, (array.typeSize*length));
-	for(counter=array.length;counter<length;counter++){
-		((char *)array.base)[counter]=0;
-	}
-	array.length = length;
-	return array;
-} 
-
+ArrayUtil resize(ArrayUtil util1, int length){
+	ArrayUtil util2 = create(util1.typeSize, length);
+	memcpy(util2.base, util1.base, util1.length*util1.typeSize);
+	return util2;
+}
 
 int findIndex(ArrayUtil array, void* element){
 	int counter;
@@ -53,5 +49,5 @@ int findIndex(ArrayUtil array, void* element){
 
 void dispose(ArrayUtil util){
 	free(util.base);
-	util.base = NULL;
 }
+
